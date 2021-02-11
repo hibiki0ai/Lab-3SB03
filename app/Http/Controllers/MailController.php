@@ -9,12 +9,12 @@ use Mail;
 class MailController extends Controller
 {
     public function basic_email(){
-        $data = array('name'=>"Tanachai");
+        $data = array('name'=>$_GET["ename"] ,'mm' => $_GET["Message"]);
         Mail::send(['text'=>'mail'],$data, function($message){
-            $message->to('ball15000@gmail.com','ball')->subject('Laravel Basic Testing Mail');
+            $message->to($_GET["eemail"],$_GET["ename"])->subject($_GET["Sub"]);
             $message->from('hibiki0ai@gmail.com','tanachai');
         });
-        echo "Basis Email Sent.Check your inbox";
-        echo $_GET["fname"];
+        echo "Basis Email Sent.Check your inbox    -- ";
+        echo $_GET["ename"];
     }
 }
